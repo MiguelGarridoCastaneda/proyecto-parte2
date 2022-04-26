@@ -109,6 +109,13 @@ class Graph:
         return tree
 
     def DFS_R(self, s):
+        """
+        Applies recursive DFS algorithm to graph
+        s: source node (int)
+
+        return tree (Graph)
+
+        """
         tree = Graph()
         visited = set()
         tree.typee = 7
@@ -116,6 +123,13 @@ class Graph:
         return t
 
     def DFS_I(self, s):
+        """
+        Applies iterative DFS algorithm to graph
+        s: source node (int)
+
+        return tree (Graph)
+
+        """
         tree = Graph()
         tree.typee = 8
         discovered = [s]
