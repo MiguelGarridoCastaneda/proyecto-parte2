@@ -71,38 +71,44 @@ class Graph:
 
         return tree (Graph), List of tree layers, label graph (for saving)
         """
+        # Se declara el grafo tree
         tree = Graph()
         visited = [False] * len(self.nodes.keys())
         visited[s] = True
         tree.addNode(s)
         tree.typee = 6
+        # vectores de capas del árbol
         L = []
         Ls = []
         L.append(s)
         Ls.append([s])
 
+        # Pasar por todos los nodos del grafo
         while L:
+            # Se obtienen vecinos del nodo s y se crean aristas si el nodo vecino no ha sido visitado
             s = L.pop(0)
             vecinos = self.nodes[s].attr['NEIGHBORS']
             L_i = []
             for vecino in vecinos:
-                # print(vecino.id)
                 if visited[vecino.id] == False:
-                    # print(vecino.id)
                     L.append(vecino.id)
                     visited[vecino.id] = True
                     tree.addEdge(s, vecino.id, f"{s}->{vecino.id}")
                     L_i.append(vecino.id)
+            # También se guardan las capas del árbol
             if len(L_i) > 0:
                 Ls.append(L_i)
 
         return tree, Ls, self.typee
 
     def DFS_UTILS(self, s, tree, visited):
+        # Se obtienen vecinos del nodo s
         visited.add(s)
         vecinos = self.nodes[s].attr['NEIGHBORS']
         random.shuffle(vecinos)
         for vecino in vecinos:
+            # si el vecino no ha sido visitado se crea arista y se llama
+            # recursivamente función con el vecino como nodo s
             if vecino.id not in visited:
                 tree.addEdge(s, vecino.id, f'{s}->{vecino.id}')
                 self.DFS_UTILS(vecino.id, tree, visited)
@@ -116,6 +122,7 @@ class Graph:
         return tree (Graph)
 
         """
+        # Se declara grafo tree y se llama función dfs recursiva
         tree = Graph()
         visited = set()
         tree.typee = 7
@@ -130,24 +137,32 @@ class Graph:
         return tree (Graph)
 
         """
+        # Se declara grafo tree
         tree = Graph()
         tree.typee = 8
         discovered = [s]
         u = s
         stack = []
+        # mientras existan elementos en stack
         while True:
+            # se obtienen vecinos de nodo u
             vecinos = self.nodes[u].attr['NEIGHBORS']
             for vecino in vecinos:
+                # si el vecino no ha sido visitado se aagrega al stack
                 if vecino.id not in discovered:
                     stack.append(vecino.id)
 
             if not stack:
                 break
 
+            # se extrae último elemento del stack
             p, c = u, stack.pop()
+            # Si el nodo c no ha sido visitado se crea arista de p a c (p->c)
+            # y se marca como visitado.
             if c not in discovered:
                 tree.addEdge(p, c, f"{p}->{c}")
                 discovered.append(c)
+            # se actualiza u = c
             u = c
 
         return tree
