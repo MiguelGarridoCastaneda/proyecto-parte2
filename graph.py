@@ -99,13 +99,13 @@ class Graph:
             if len(L_i) > 0:
                 Ls.append(L_i)
 
-        return tree, Ls, self.typee
+        return tree, Ls
 
     def DFS_UTILS(self, s, tree, visited):
         # Se obtienen vecinos del nodo s
         visited.add(s)
         vecinos = self.nodes[s].attr['NEIGHBORS']
-        random.shuffle(vecinos)
+        # random.shuffle(vecinos)
         for vecino in vecinos:
             # si el vecino no ha sido visitado se crea arista y se llama
             # recursivamente función con el vecino como nodo s

@@ -1,5 +1,7 @@
 digraph my_graph {
-5 [label=5]
+22 [label=22]
+16 [label=16]
+10 [label=10]
 4 [label=4]
 3 [label=3]
 2 [label=2]
@@ -25,9 +27,6 @@ digraph my_graph {
 21 [label=21]
 15 [label=15]
 9 [label=9]
-10 [label=10]
-16 [label=16]
-22 [label=22]
 28 [label=28]
 34 [label=34]
 35 [label=35]
@@ -35,7 +34,10 @@ digraph my_graph {
 23 [label=23]
 17 [label=17]
 11 [label=11]
-5->4
+5 [label=5]
+22->16
+16->10
+10->4
 4->3
 3->2
 2->1
@@ -60,14 +62,12 @@ digraph my_graph {
 27->21
 21->15
 15->9
-9->10
-10->16
-16->22
-22->28
+27->28
 28->34
 34->35
 35->29
 29->23
 23->17
 17->11
+11->5
 }
